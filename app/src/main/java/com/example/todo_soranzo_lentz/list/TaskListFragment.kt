@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -15,6 +15,9 @@ import com.example.todo_soranzo_lentz.R
 import com.example.todo_soranzo_lentz.data.Api
 import com.example.todo_soranzo_lentz.databinding.FragmentTaskListBinding
 import com.example.todo_soranzo_lentz.detail.DetailActivity
+import coil.load
+import coil.transform.CircleCropTransformation
+import com.example.todo_soranzo_lentz.user.UserActivity
 import kotlinx.coroutines.launch
 
 class TaskListFragment : Fragment() {
@@ -55,6 +58,8 @@ class TaskListFragment : Fragment() {
         viewModel.refresh()
     }
 
+    val editProfile = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result -> }
+
     private val viewModel: TasksListViewModel by viewModels()
 
     override fun onCreateView(
@@ -78,6 +83,10 @@ class TaskListFragment : Fragment() {
             val intent = Intent(context, DetailActivity::class.java)
             createTask.launch(intent)
         }
+        binding.imageView.setOnClickListener {
+            val intent = Intent(context, UserActivity::class.java)
+            editTask.launch(intent)
+        }
         viewModel.refresh()
         lifecycleScope.launch { // on lance une coroutine car `collect` est `suspend`
             viewModel.tasksStateFlow.collect { newList ->
@@ -95,10 +104,16 @@ class TaskListFragment : Fragment() {
             mySuspendMethod()
         }
         viewModel.refresh()
+        /*view?.findViewById<ImageView>(R.id.imageView)?.load("https://goo.gl/gEgYUd") {
+            transformations(CircleCropTransformation())
+        }*/
     }
 
     private suspend fun mySuspendMethod() {
         val user = Api.userWebService.fetchUser().body()!!
         view?.findViewById<TextView>(R.id.userTextView)?.text = user.name
+        view?.findViewById<ImageView>(R.id.imageView)?.load(user.avatar) {
+            error(R.drawable.ic_launcher_background) // image par défaut en cas d'erreur
+        }
     }
 }

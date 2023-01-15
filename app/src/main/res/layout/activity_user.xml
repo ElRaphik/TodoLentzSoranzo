@@ -4,12 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <androidx.fragment.app.FragmentContainerView
-        android:name="com.example.todo_soranzo_lentz.list.TaskListFragment"
-        android:id="@+id/fragment_tasklist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    tools:context=".user.UserActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
