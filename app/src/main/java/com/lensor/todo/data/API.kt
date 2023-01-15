@@ -6,11 +6,13 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.create
 
 object Api {
     private const val TOKEN = "a786a38d25271e737b78d8f3a35ada2333be6adf"
 
     private val retrofit by lazy {
+
         // client HTTP
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
@@ -36,4 +38,9 @@ object Api {
             .addConverterFactory(jsonSerializer.asConverterFactory("application/json".toMediaType()))
             .build()
     }
+
+    val userWebService : UserWebService by lazy {
+        retrofit.create(UserWebService::class.java)
+    }
+
 }
