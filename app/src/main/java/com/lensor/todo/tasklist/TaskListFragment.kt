@@ -62,7 +62,5 @@ class TaskListFragment : Fragment() {
             val intent = Intent(context, DetailActivity::class.java)
             createTask.launch(intent)
         }
-
-
     }
 }
