@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Todo LentzSoranzo</string>
+    <string name="app_name">TODO_SORANZO_LENTZ</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="plusSign">Plus Sign</string>
-    <string name="delete_button">Delete Button</string>
-    <string name="edit_button">Edit Button</string>
+
+    <string name="edit_button">Editer Tâche</string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="delete_button">SUpprimer Tâche</string>
 </resources>
