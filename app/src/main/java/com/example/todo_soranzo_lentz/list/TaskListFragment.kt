@@ -16,7 +16,6 @@ import com.example.todo_soranzo_lentz.data.Api
 import com.example.todo_soranzo_lentz.databinding.FragmentTaskListBinding
 import com.example.todo_soranzo_lentz.detail.DetailActivity
 import coil.load
-import coil.transform.CircleCropTransformation
 import com.example.todo_soranzo_lentz.user.UserActivity
 import kotlinx.coroutines.launch
 
