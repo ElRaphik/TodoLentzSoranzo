@@ -6,4 +6,6 @@
     <string name="edit_button">Editer Tâche</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="delete_button">SUpprimer Tâche</string>
+    <string name="fab_add">Add Task</string>
+    <string name="usernamedef">UsernameDef</string>
 </resources>
